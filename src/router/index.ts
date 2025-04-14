@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import OverviewPage from "../views/OverviewPage.vue";
-import DetailPage from "../views/DetailPage.vue";
 import NotFoundPage from '../views/NotFoundPage.vue';
 
 const router = createRouter({
@@ -8,16 +7,18 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: OverviewPage
+            component: () => import('../views/OverviewPage.vue')
         },
         {
-            path: '/detail/:id',
-            component: DetailPage
+            path: '/show/:id',
+            component: () => import('../views/DetailPage.vue'),
+            props: true,
+
         },
         {
             path: '/:catchAll(.*)',
             name: 'NotFound',
-            component: NotFoundPage
+            component: () => import('../views/NotFoundPage.vue'),
         }
     ]
 })

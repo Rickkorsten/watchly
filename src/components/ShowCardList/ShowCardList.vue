@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="mb-8">
     <h2
-        class="text-xl font-semibold mb-2"
+        class="text-xl text-neutral-200 font-semibold mb-2"
         :id="`genre-heading-${genre}`"
     >
       Top {{ genre.toLocaleLowerCase() }}

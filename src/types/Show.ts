@@ -7,10 +7,10 @@ export interface Show {
     genres: string[];
     status: string;
     runtime: number | null;
-    averageRuntime: number | null;
-    premiered: string | null;
-    ended: string | null;
-    officialSite: string | null;
+    averageRuntime?: number | null;
+    premiered?: string;
+    ended?: string;
+    officialSite?: string;
     schedule: {
         time: string;
         days: string[];
@@ -19,36 +19,108 @@ export interface Show {
         average: number | null;
     };
     weight: number;
-    network: {
-        id: number;
-        name: string;
-        country: {
-            name: string;
-            code: string;
-            timezone: string;
-        } | null;
-        officialSite: string | null;
-    } | null;
-    webChannel: any | null;
-    dvdCountry: any | null;
+    network: Network | null;
+    webChannel: unknown; // or define if needed
+    dvdCountry: unknown;
     externals: {
-        tvrage: number | null;
-        thetvdb: number | null;
-        imdb: string | null;
+        tvrage?: number | null;
+        thetvdb?: number | null;
+        imdb?: string | null;
     };
-    image: {
-        medium: string;
-        original: string;
-    } | null;
-    summary: string | null;
-    updated: number;
+    image?: Image;
+    summary?: string;
+    updated?: number;
     _links: {
-        self: {
-            href: string;
-        };
-        previousepisode?: {
-            href: string;
-            name?: string;
-        };
+        self: Link;
+        previousepisode?: Link & { name?: string };
     };
 }
+
+export interface ShowDetails extends Show {
+    _embedded?: {
+        episodes?: Episode[];
+        cast?: CastMember[];
+    };
+}
+
+export interface SearchShow {
+    score: number;
+    show: Show;
+}
+
+export interface Episode {
+    id: number;
+    url: string;
+    name: string;
+    season: number;
+    number: number;
+    type: string;
+    airdate: string;
+    airtime: string;
+    airstamp: string;
+    runtime: number;
+    rating: {
+        average: number | null;
+    };
+    image?: Image;
+    summary?: string;
+    _links: {
+        self: Link;
+        show: Link & { name?: string };
+    };
+}
+
+export interface CastMember {
+    person: Person;
+    character: Character;
+    self: boolean;
+    voice: boolean;
+}
+
+export interface Person {
+    id: number;
+    url: string;
+    name: string;
+    birthday?: string;
+    deathday?: string | null;
+    gender?: string;
+    country?: Country;
+    image?: Image;
+    updated?: number;
+    _links: {
+        self: Link;
+    };
+}
+
+export interface Character {
+    id: number;
+    url: string;
+    name: string;
+    image?: Image;
+    _links: {
+        self: Link;
+    };
+}
+
+export interface Network {
+    id: number;
+    name: string;
+    country: Country;
+    officialSite: string | null;
+}
+
+export interface Country {
+    name: string;
+    code: string;
+    timezone: string;
+}
+
+export interface Image {
+    medium: string;
+    original: string;
+}
+
+export interface Link {
+    href: string;
+}
+

@@ -23,14 +23,14 @@ defineProps({
 
 <template>
   <router-link
-      :to="`/detail/${id}`"
+      :to="`/show/${id}`"
       :aria-label="`View details for ${name}`"
       class="relative flex-none text-center group block rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
   >
     <img
         :src="image"
         :alt="`Poster of ${name}`"
-        class="h-80 w-48 object-cover object-top rounded-lg shadow-md"
+        class="h-48 w-32 sm:h-48 sm:w-32 md:h-64 md:w-40 lg:h-80 lg:w-48 object-cover object-top rounded-lg shadow-md"
     />
     <div
         class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent text-white p-2 text-sm flex flex-col justify-end rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
