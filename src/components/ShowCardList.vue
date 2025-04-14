@@ -1,0 +1,25 @@
+<script setup lang="ts">
+defineProps({
+  genre: {
+    type: String,
+    required: true,
+  },
+});
+</script>
+
+<template>
+  <div class="mb-8">
+    <h2
+        class="text-xl font-semibold mb-2"
+        :id="`genre-heading-${genre}`"
+    >
+      Top {{ genre.toLocaleLowerCase() }}
+    </h2>
+    <div
+        class="flex space-x-4 p-2 overflow-x-auto"
+        :aria-labelledby="`genre-heading-${genre}`"
+    >
+      <slot />
+    </div>
+  </div>
+</template>
