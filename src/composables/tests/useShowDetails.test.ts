@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useShowDetails } from "../useShowDetails";
-import { fetchShowDetails } from "../../api/shows";
+import { fetchShowDetails } from "@/api/shows";
 import { QueryClient, VueQueryPlugin } from "@tanstack/vue-query";
 import { mount } from "@vue/test-utils";
 import { defineComponent, h, nextTick } from "vue";
-import type { ShowDetails } from "../../types/Show.ts";
+import type { ShowDetails } from "@/types/Show.ts";
 
-vi.mock("../../api/shows", () => ({
+vi.mock("@/api/shows", () => ({
   fetchShowDetails: vi.fn(),
 }));
 

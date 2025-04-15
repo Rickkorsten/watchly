@@ -2,11 +2,11 @@
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useShowDetails } from "../composables/useShowDetails";
-import EpisodeCard from "../components/molecules/EpisodeCard/EpisodeCard.vue";
-import CastCard from "../components/molecules/CastCard/CastCard.vue";
-import ShowDetailsInfo from "../components/organisms/ShowDetailsInfo/ShowDetailsInfo.vue";
-import DetailPageSkeleton from "../components/templates/DetailPageSkeleton/DetailPageSkeleton.vue";
-import BackButton from "../components/atoms/BackButton/BackButton.vue";
+import EpisodeCard from "@/components/molecules/EpisodeCard/EpisodeCard.vue";
+import CastCard from "@/components/molecules/CastCard/CastCard.vue";
+import ShowDetailsInfo from "@/components/organisms/ShowDetailsInfo/ShowDetailsInfo.vue";
+import DetailPageSkeleton from "@/components/templates/DetailPageSkeleton/DetailPageSkeleton.vue";
+import BackButton from "@/components/atoms/BackButton/BackButton.vue";
 
 const route = useRoute();
 const showId = route.params.id as string;
@@ -97,7 +97,9 @@ const allCastLoaded = computed(
 
       <div class="mt-12">
         <h2 class="text-3xl font-bold text-neutral-200 mb-4">Episodes</h2>
-        <div class="flex space-x-4 p-2 overflow-x-auto focus:outline-none focus:ring-none focus:ring-purple-none">
+        <div
+          class="flex space-x-4 p-2 overflow-x-auto focus:outline-none focus:ring-none focus:ring-purple-none"
+        >
           <EpisodeCard
             v-for="episode in data?._embedded?.episodes"
             :key="episode?.id"

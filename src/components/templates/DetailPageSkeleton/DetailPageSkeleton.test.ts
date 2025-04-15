@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import DetailPageSkeleton from "./DetailPageSkeleton.vue"; // adjust path as needed
-import Skeleton from "../../atoms/Skeleton/Skeleton.vue";
+import DetailPageSkeleton from "./DetailPageSkeleton.vue";
+import Skeleton from "@/components/atoms/Skeleton/Skeleton.vue";
 
 describe("SkeletonLayout.vue", () => {
   it("renders all skeleton sections correctly", () => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from "../../atoms/Card/Card.vue";
+import Card from "@/components/atoms/Card/Card.vue";
 
 interface Props {
   id: number;

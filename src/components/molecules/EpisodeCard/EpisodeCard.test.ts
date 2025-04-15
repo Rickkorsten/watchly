@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import EpisodeCard from "./EpisodeCard.vue";
-import Card from "../../atoms/Card/Card.vue";
+import Card from "@/components/atoms/Card/Card.vue";
 
 describe("EpisodeCard.vue", () => {
   it("renders card with name, episode and airdate", () => {

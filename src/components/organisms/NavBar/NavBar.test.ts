@@ -3,7 +3,7 @@ import { mount, flushPromises } from "@vue/test-utils";
 import NavBar from "./NavBar.vue";
 import { createRouter, createMemoryHistory } from "vue-router";
 
-vi.mock("../../../composables/useShowsSearch.ts", () => {
+vi.mock("@/composables/useShowsSearch.ts", () => {
   return {
     useShowsSearch: () => ({
       data: [

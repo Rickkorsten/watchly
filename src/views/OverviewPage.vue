@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useShowsByGenre } from "../composables/useShowsByGenre";
-import ShowCard from "../components/molecules/ShowCard/ShowCard.vue";
-import ShowCardList from "../components/organisms/ShowCardList/ShowCardList.vue";
-import OverviewPageSkeleton from "../components/templates/OverviewPageSkeleton/OverviewPageSkeleton.vue";
+import { useShowsByGenre } from "@/composables/useShowsByGenre.ts";
+import ShowCard from "@/components/molecules/ShowCard/ShowCard.vue";
+import ShowCardList from "@/components/organisms/ShowCardList/ShowCardList.vue";
+import OverviewPageSkeleton from "@/components/templates/OverviewPageSkeleton/OverviewPageSkeleton.vue";
 
 const genres = ["Anime", "Comedy", "Thriller", "Drama", "Fantasy", "Nature"];
 const { data, isLoading, error } = useShowsByGenre(genres);
