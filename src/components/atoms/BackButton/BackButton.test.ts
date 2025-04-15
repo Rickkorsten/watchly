@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import { createRouter, createMemoryHistory } from "vue-router";
 import BackButton from "./BackButton.vue";
-import { defineComponent } from "vue"; // adjust path as needed
+import { defineComponent } from "vue";
 
 const DummyComponent = defineComponent({
   template: "<div>Dummy</div>",

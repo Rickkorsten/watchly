@@ -56,7 +56,6 @@ The application is designed to be fully responsive, providing an optimal user ex
   - **`types/`**: Defines TypeScript types and interfaces for type safety.
   - **`views/`**: Contains page components that define the main structure of the application.
   - **`router/`**: Holds the router configuration (`index.ts`) for navigation.
-  - **`assets/`**: Stores static files like images and styles.
   - **`App.vue`**: The root component of the application.
   - **`main.ts`**: The entry point of the application.
 

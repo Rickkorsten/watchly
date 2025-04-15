@@ -4,7 +4,6 @@ import { ref } from "vue";
 import OverviewPage from "../OverviewPage.vue";
 import { useShowsByGenre } from "@/composables/useShowsByGenre";
 
-// Mock the composable
 vi.mock("@/composables/useShowsByGenre");
 
 describe("OverviewPage.vue", () => {
@@ -60,12 +59,10 @@ describe("OverviewPage.vue", () => {
 
     const wrapper = mount(OverviewPage);
 
-    // Check for genre headers and show names
     expect(wrapper.text()).toContain("TV Shows");
     expect(wrapper.text()).toContain("Naruto");
     expect(wrapper.text()).toContain("Brooklyn Nine-Nine");
 
-    // Check for images
     const images = wrapper.findAll("img");
     expect(images.length).toBeGreaterThan(0);
   });

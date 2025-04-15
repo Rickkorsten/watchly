@@ -13,7 +13,6 @@ describe("SearchInput.vue", () => {
     const input = wrapper.get("input");
     await input.setValue("New Value");
 
-    // assert emitted event
     expect(wrapper.emitted()["update:searchQuery"]).toBeTruthy();
     expect(wrapper.emitted()["update:searchQuery"]![0]).toEqual(["New Value"]);
   });

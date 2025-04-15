@@ -19,7 +19,6 @@ describe("DetailPage.vue", () => {
   beforeEach(() => {
     vi.resetAllMocks();
 
-    // Mock the route params
     (useRoute as ReturnType<typeof vi.fn>).mockReturnValue({
       params: { id: "1" },
     });
