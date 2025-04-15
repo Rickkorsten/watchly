@@ -1,18 +1,11 @@
 <script setup lang="ts">
-defineProps({
-  image: {
-    type: String,
-    required: false,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  character: {
-    type: String,
-    required: true,
-  },
-});
+interface Props {
+  image?: string;
+  name: string;
+  character: string;
+}
+
+defineProps<Props>();
 </script>
 
 <template>
@@ -26,7 +19,7 @@ defineProps({
         class="w-16 h-16 rounded-full object-cover border-2 border-neutral-700"
     />
     <div>
-      <p class="font-medium text-neutral-200 line-clamp-2 text-md sm:text-sm md:text-lg ">{{ name }}</p>
+      <p class="font-medium text-neutral-200 line-clamp-2 text-base sm:text-sm md:text-lg ">{{ name }}</p>
       <p class="text-xs md:text-sm text-neutral-400 line-clamp-2 md:line-clamp-3">as {{ character }}</p>
     </div>
   </div>

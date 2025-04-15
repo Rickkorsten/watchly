@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import OverviewPage from "../views/OverviewPage.vue";
-import NotFoundPage from '../views/NotFoundPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),

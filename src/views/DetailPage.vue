@@ -2,20 +2,19 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useShowDetails } from "../composables/useShowDetails";
-import EpisodeCard from "../components/EpisodeCard/EpisodeCard.vue";
-import CastCard from "../components/CastCard/CastCard.vue";
-import Skeleton from "../components/Skeleton/Skeleton.vue";
-import ShowDetailsInfo from "../components/ShowDetailsInfo/ShowDetailsInfo.vue";
+import EpisodeCard from "../components/molecules/EpisodeCard/EpisodeCard.vue";
+import CastCard from "../components/molecules/CastCard/CastCard.vue";
+import ShowDetailsInfo from "../components/organisms/ShowDetailsInfo/ShowDetailsInfo.vue";
+import DetailPageSkeleton from "../components/templates/DetailPageSkeleton/DetailPageSkeleton.vue";
+import BackButton from "../components/atoms/BackButton/BackButton.vue";
 
 const route = useRoute();
 const showId = route.params.id as string;
 
 const { data, isLoading, error } = useShowDetails(showId);
 
-// Track how many cast members to show
 const visibleCount = ref(8);
 
-// Computed visible cast
 const cast = computed(() => data.value?._embedded?.cast || []);
 const visibleCast = computed(() => cast.value.slice(0, visibleCount.value));
 
@@ -28,53 +27,18 @@ const allCastLoaded = computed(() => visibleCast.value.length >= cast.value.leng
 
 <template>
   <div class="detail-page p-4">
-    <!-- Back Button -->
-    <RouterLink
-        to="/"
-        class="flex items-center w-fit mb-4 px-2 py-2 text-white text-bold rounded hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-        <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
-      </svg>
-      <span class="ml-2">Back</span>
-    </RouterLink>
+    <BackButton to="/" />
 
     <div v-if="isLoading" class="space-y-6" role="status" aria-busy="true">
-      <!-- Skeleton for Show Details -->
-      <div class="flex flex-col lg:flex-row gap-8">
-        <Skeleton type="image" />
-        <div class="flex-1 space-y-4">
-          <Skeleton type="title" />
-          <Skeleton type="text" />
-          <Skeleton type="text" />
-          <Skeleton type="text" />
-        </div>
-      </div>
-
-      <!-- Skeleton for Cast Section -->
-      <div>
-        <Skeleton type="title" />
-        <div class="grid grid-cols-2 mt-4 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          <Skeleton v-for="n in 4" :key="n" type="card" />
-        </div>
-      </div>
-
-      <!-- Skeleton for Episodes Section -->
-      <div>
-        <Skeleton type="title" />
-        <div class="flex space-x-4 p-2 mt-4 overflow-x-auto">
-          <Skeleton v-for="n in 4" :key="n" type="image" />
-        </div>
-      </div>
+      <DetailPageSkeleton/>
     </div>
 
-    <div v-else-if="error" class="text-center text-red-500">
-      <p>Error: {{ error }}</p>
+    <div v-else-if="error" class="h-svh flex items-center justify-center" role="alert" aria-live="assertive">
+      <p class="text-lg text-red-500">Could not load TV shows, please try again later.</p>
     </div>
 
     <div v-else>
-      <!-- Show Details -->
-      <div class="flex flex-col lg:flex-row gap-8">
+      <div class="flex flex-col lg:flex-row" :class="{'gap-8': data?.image?.original}">
         <div class="flex-shrink-0">
           <img
               v-if="data?.image?.original"
@@ -98,8 +62,8 @@ const allCastLoaded = computed(() => visibleCast.value.length >= cast.value.leng
         </div>
       </div>
 
-      <div class="mt-12">
-        <h2 class="text-3xl font-bold mb-6">Cast</h2>
+      <div v-if="cast.length" class="mt-12">
+        <h2 class="text-3xl text-neutral-200 font-bold mb-6">Cast</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           <CastCard
               v-for="member in visibleCast"
@@ -124,13 +88,12 @@ const allCastLoaded = computed(() => visibleCast.value.length >= cast.value.leng
         <div class="flex space-x-4 p-2 overflow-x-auto">
           <EpisodeCard
               v-for="episode in data?._embedded?.episodes"
-              :key="episode.id"
-              :id="episode.id"
-              :image="episode.image?.original ?? data?.image?.original"
-              :name="episode.name"
-              :season="episode.season"
-              :number="episode.number"
-              :airdate="episode.airdate"
+              :key="episode?.id"
+              :id="episode?.id"
+              :image="episode?.image?.original ?? data?.image?.original"
+              :name="episode?.name"
+              :episode="`Season ${episode?.season}, Episode ${episode?.number}`"
+              :airdate="episode?.airdate"
           />
         </div>
       </div>

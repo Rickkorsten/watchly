@@ -1,10 +1,9 @@
 <script setup lang="ts">
-defineProps({
-  genre: {
-    type: String,
-    required: true,
-  },
-});
+interface Props {
+  genre: string;
+}
+
+defineProps<Props>();
 </script>
 
 <template>

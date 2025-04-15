@@ -1,4 +1,3 @@
-// File: src/helpers/sortShowsByGenre.ts
 import type { Show } from '../types/Show';
 
 export function sortShowsByGenre(shows: Show[], genres: string[]): Record<string, Show[]> {

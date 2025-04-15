@@ -7,7 +7,7 @@ export interface Show {
     genres: string[];
     status: string;
     runtime: number | null;
-    averageRuntime?: number | null;
+    averageRuntime?: number;
     premiered?: string;
     ended?: string;
     officialSite?: string;
@@ -16,11 +16,11 @@ export interface Show {
         days: string[];
     };
     rating: {
-        average: number | null;
+        average?: number;
     };
     weight: number;
     network: Network | null;
-    webChannel: unknown; // or define if needed
+    webChannel: unknown;
     dvdCountry: unknown;
     externals: {
         tvrage?: number | null;
@@ -60,7 +60,7 @@ export interface Episode {
     airstamp: string;
     runtime: number;
     rating: {
-        average: number | null;
+        average?: number;
     };
     image?: Image;
     summary?: string;
@@ -82,7 +82,7 @@ export interface Person {
     url: string;
     name: string;
     birthday?: string;
-    deathday?: string | null;
+    deathday?: string;
     gender?: string;
     country?: Country;
     image?: Image;
@@ -106,7 +106,7 @@ export interface Network {
     id: number;
     name: string;
     country: Country;
-    officialSite: string | null;
+    officialSite?: string;
 }
 
 export interface Country {
