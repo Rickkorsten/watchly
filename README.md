@@ -134,6 +134,12 @@ npm run format
 npm run build
 ```
 
+# Run build locally
+
+```bash
+vite preview
+```
+
 # Vercel link
 
 https://watchly-two.vercel.app/
