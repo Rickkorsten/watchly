@@ -24,6 +24,7 @@ const { data, isLoading, error } = useShowsByGenre(genres);
       </p>
     </div>
     <div v-else>
+      <h1 class="text-5xl text-neutral-200 font-extrabold mb-6">TV Shows</h1>
       <ShowCardList v-for="(shows, genre) in data" :key="genre" :genre="genre">
         <ShowCard
           v-for="show in shows"

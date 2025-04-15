@@ -11,7 +11,7 @@ defineProps<Props>();
 <template>
   <RouterLink
     :to="to"
-    class="flex items-center w-fit mb-4 px-2 py-2 text-white text-bold rounded hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
+    class="flex items-center w-fit mb-4 px-2 py-2 text-white text-bold rounded hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
     aria-label="Go back to the previous page"
   >
     <svg

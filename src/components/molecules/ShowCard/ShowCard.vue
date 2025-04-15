@@ -15,7 +15,7 @@ defineProps<Props>();
   <router-link
     :to="`/show/${id}`"
     :aria-label="`View details for ${name}`"
-    class="relative flex-none text-center group block rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    class="relative flex-none text-center group block rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
   >
     <Card :image="image" :name="name">
       <template #default>

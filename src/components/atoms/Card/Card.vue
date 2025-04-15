@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
   <div
     id="overlay"
     :class="{
-      'opacity-0 group-hover:opacity-100': hasHover,
+      'opacity-0 group-hover:opacity-100 group-focus:opacity-100': hasHover,
       'opacity-100': !hasHover,
     }"
     class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent text-white p-2 text-sm flex flex-col justify-end rounded-lg transition-opacity duration-300"

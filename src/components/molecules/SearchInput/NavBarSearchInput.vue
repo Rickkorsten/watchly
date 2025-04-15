@@ -28,7 +28,7 @@ const handleKeydown = (e: KeyboardEvent) => {
       @keydown="handleKeydown"
       type="text"
       placeholder="Search..."
-      class="w-full px-4 py-2 pr-10 bg-neutral-800 text-white rounded-lg shadow-md"
+      class="w-full px-4 py-2 pr-10 bg-neutral-800 text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
       aria-label="Search for shows"
     />
     <svg

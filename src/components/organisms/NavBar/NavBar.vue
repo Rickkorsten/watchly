@@ -41,7 +41,11 @@ onBeforeUnmount(() => {
 
 <template>
   <nav class="h-18 flex items-center justify-between px-4">
-    <RouterLink to="/" class="text-neutral-100 font-bold text-2xl">
+    <RouterLink to="/"
+                class="text-neutral-100 font-bold text-2xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                aria-label="Go to Home"
+                aria-current="page"
+    >
       🎬
     </RouterLink>
     <div class="relative flex items-center">
