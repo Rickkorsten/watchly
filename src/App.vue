@@ -5,4 +5,3 @@ import DefaultLayout from "./layouts/DefaultLayout.vue";
 <template>
   <DefaultLayout />
 </template>
-

@@ -28,4 +28,3 @@ import Skeleton from "../../atoms/Skeleton/Skeleton.vue";
     </div>
   </div>
 </template>
-
