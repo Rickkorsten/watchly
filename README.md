@@ -66,7 +66,7 @@ The application is designed to be fully responsive, providing an optimal user ex
 The `composables` folder contains hooks for data-fetching functionality:
 
 - **`useShowsSearch.ts`**: Fetches search results for shows based on a query.
-- **`useShowsByGenre.ts`**: Fetches shows grouped by genre.
+- **`useShowsByGenre.ts`**: Fetches shows grouped by genre. The loop with the 5 pages is used to fetch multiple pages of TV show data from the API. Since the API paginates its results, iterating through the pages ensures that you retrieve a larger dataset (up to the specified maxPages).
 - **`useShowsDetails.ts`**: Fetches detailed information about a specific show incl. cast and episodes.
 
 All composables leverage `vue-query` for efficient data-fetching and caching.
